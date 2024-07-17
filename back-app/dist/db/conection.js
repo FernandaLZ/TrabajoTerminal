@@ -29,7 +29,7 @@ exports.admin = admin;
 const firebase = __importStar(require("firebase/app"));
 exports.firebase = firebase;
 require("firebase/auth");
-var serviceAccount = require("../../trabajoterminalpastillero-firebase-adminsdk-693lh-b332019e94.json");
+var serviceAccount = require("C:\Users\ferna\Documents\TTKey\trabajoterminalpastillero-firebase-adminsdk-693lh-b332019e94.json");
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
 });
