@@ -10,10 +10,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "@firebase/app-types": "^0.9.2",
     "@types/node": "^20.14.11",
+    "back-app": "file:",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -30,5 +30,6 @@
     "nodemon": "^3.1.4",
     "npm": "^10.8.2",
     "typescript": "^5.5.3"
-  }
+  },
+  "description": ""
 }

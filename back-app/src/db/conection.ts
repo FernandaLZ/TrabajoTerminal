@@ -2,7 +2,7 @@ import * as admin from 'firebase-admin';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 
-var serviceAccount = require("C:\Users\ferna\Documents\TTKey\trabajoterminalpastillero-firebase-adminsdk-693lh-b332019e94.json");
+var serviceAccount = require("C:/Users/ferna/Documents/TTKey/trabajoterminalpastillero-firebase-adminsdk-693lh-b332019e94.json");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
