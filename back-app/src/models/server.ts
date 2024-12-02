@@ -1,5 +1,6 @@
 import express, {Application} from 'express';
-import routerUser from '../routes/user'
+import routerUser from '../routes/user';
+import cors from 'cors'; // Importar cors
 
 class Server{
     private app: Application;
@@ -12,6 +13,7 @@ class Server{
         this.routes();
         console.log(process.env.PORT)
     }
+    
 
     listen(){
         this.app.listen(this.port,()=>{
@@ -24,6 +26,12 @@ class Server{
     }
 
     middlewares() {
+        this.app.use(cors({
+            origin: 'http://localhost:4200', // Allow requests from your Angular frontend
+            methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+            credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+            preflightContinue: false, // Don't send a response on OPTIONS requests automatically
+        }));
         this.app.use(express.json()); 
     }
 }
