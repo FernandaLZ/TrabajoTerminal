@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">PastillApp</string>
+    <string name="login_title">Iniciar Sesión</string>
+    <string name="register_title">Crear Cuenta</string>
+    <string name="forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="email_hint">Correo electrónico</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="logo_description">Logo de la aplicación</string>
+    <string name="user_icon">Ícono de usuario</string>
+    <string name="lock_icon">Ícono de candado</string>
+    <string name="create_account">Crear Cuenta</string>
+    <string name="help">Ayuda</string>
+    <string name="first_name_hint">Nombre(s)</string>
+    <string name="last_name_hint">Apellidos</string>
+    <string name="phone_hint">Número de Teléfono</string>
+    <string name="register_button">Registrar</string>
+    <string name="back_button">Volver</string>
+    <string name="main_menu_title">PastillApp - Menú</string>
+    <string name="logged_in_user">Paciente</string>
+    <string name="gestion_monitoring_button">Gestión y Monitoreo</string>
+    <string name="view_recipes_button">Ver Recetas</string>
+    <string name="doctor_confirmation_button">Confirmación Doctor</string>
+    <string name="logout_button">Cerrar Sesión</string>
+    <string name="gestion_monitoring_title">Gestión y Monitoreo</string>
+    <string name="update_compartment_message">Selecciona fecha y hora para actualizar</string>
+    <string name="gestion_monitor_title">Gestión y Monitoreo</string>
+    <string name="receta_title">Ver Recetas</string>
+    <string name="example_receta">Receta ejemplo</string>
+    <string name="select_doctor">Seleccionar</string>
+    <string name="doctor_name">Doctor Name</string>
+    <string name="confirm_doctor_message">¿Confirmar al doctor seleccionado?</string>
+    <string name="confirm_button">Confirmar</string>
+    <string name="confirm_doctor_title">Confirmación de Doctor</string>
+
+
+</resources>
