@@ -1,0 +1,67 @@
+/* medical-record-form.component.css */
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+button {
+  width: 100%;
+}
+/* Centrar el título */
+.centered-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Estilos del acordeón */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto; /* Centrado del acordeón */
+}
+
+.accordion-item {
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-item input {
+  display: none;
+}
+
+.accordion-title {
+  display: block;
+  padding: 10px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+}
+
+.accordion-title:hover {
+  background-color: #d0d0d0;
+}
+
+.accordion-content {
+  display: none;
+  padding: 10px;
+  background-color: #fafafa;
+  border-radius: 5px;
+}
+
+.accordion-item input:checked ~ .accordion-content {
+  display: block;
+}
+

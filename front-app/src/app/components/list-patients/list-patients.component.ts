@@ -10,6 +10,9 @@ import {
 } from "@angular/material/table";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {NgIf} from "@angular/common";
+import {NavbarComponent} from "../../navbar/navbar.component";
+import {ActivatedRoute, Router} from "@angular/router";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-list-patients',
@@ -27,7 +30,8 @@ import {NgIf} from "@angular/common";
     MatRowDef,
     MatIconButton,
     NgIf,
-    MatButton
+    MatButton,
+    NavbarComponent
   ],
   templateUrl: './list-patients.component.html',
   styleUrl: './list-patients.component.scss'
@@ -35,35 +39,43 @@ import {NgIf} from "@angular/common";
 export class ListPatientsComponent implements OnInit{
   displayedColumns = ['position', 'name', 'accions'];
   ELEMENT_DATA: Paciente[] =[];
+  idDoctor
+  constructor(
+    private router: Router,
+    private userService:UserService,
+    private route: ActivatedRoute
+              ) {
+    this.idDoctor = this.route.snapshot.paramMap.get('id');
+  }
   ngOnInit(){
-    this.ELEMENT_DATA = [
-      { position: 1, name: 'Alice Johnson', puedeVerFicha: true },
-      { position: 2, name: 'Bob Smith', puedeVerFicha: false },
-      { position: 3, name: 'Carlos Pérez', puedeVerFicha: true },
-      { position: 4, name: 'Daniela Martínez', puedeVerFicha: false },
-      { position: 5, name: 'Elena García', puedeVerFicha: true },
-      { position: 6, name: 'Frank Wilson', puedeVerFicha: false },
-      { position: 7, name: 'Gloria Fernández', puedeVerFicha: true },
-      { position: 8, name: 'Hector Lopez', puedeVerFicha: false },
-      { position: 9, name: 'Irene Rodríguez', puedeVerFicha: true },
-      { position: 10, name: 'Jorge Torres', puedeVerFicha: false },
-      { position: 11, name: 'Karen Lee', puedeVerFicha: true },
-      { position: 12, name: 'Luis Hernández', puedeVerFicha: false },
-      { position: 13, name: 'Maria Kim', puedeVerFicha: true },
-      { position: 14, name: 'Nina Brown', puedeVerFicha: false },
-      { position: 15, name: 'Oscar Díaz', puedeVerFicha: true },
-      { position: 16, name: 'Patricia Cruz', puedeVerFicha: false },
-      { position: 17, name: 'Quinn Navarro', puedeVerFicha: true },
-      { position: 18, name: 'Roberto Soto', puedeVerFicha: false },
-      { position: 19, name: 'Sofia Ramos', puedeVerFicha: true },
-      { position: 20, name: 'Tomás Vega', puedeVerFicha: false },
-    ];
+    this.userService.listPacientes(this.idDoctor??'').subscribe({
+      next:data=>{
+        console.log(data)
+        const dat:Paciente[]=data.map((val:any)=>{
+          return {
+            idPaciente:val.idPaciente,
+            telefono: val.telefono,
+            name: val.nombre +' '+ val.apellidop +' '+ val.apellidom,
+            puedeVerFicha: val.permiso
+          }
+        })
+        this.ELEMENT_DATA=dat;
+      },
+      error:err => {
+        console.error(err)
+      }
+    })
+  }
+
+  consultarFichaMedica(idPaciente:string){
+    this.router.navigate(['/record', this.idDoctor,idPaciente]).then(r => false);
   }
 
 }
 export interface Paciente {
+  idPaciente:number;
   name: string;
-  position: number;
+  telefono: number;
   puedeVerFicha: boolean;
 }
 

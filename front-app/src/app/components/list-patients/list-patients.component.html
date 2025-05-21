@@ -1,15 +1,16 @@
+<app-navbar></app-navbar>
 <div class="example-container mat-elevation-z8 tw-mx-6">
   <mat-table #table [dataSource]="ELEMENT_DATA">
     <!-- Position Column -->
     <ng-container matColumnDef="position">
-      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> Telefono </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.telefono}} </mat-cell>
     </ng-container>
 
 
@@ -17,7 +18,7 @@
     <ng-container matColumnDef="accions">
       <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <button mat-flat-button *ngIf="element.puedeVerFicha === true"> Ver ficha Medica </button>
+        <button mat-flat-button *ngIf="element.puedeVerFicha === true" (click)="consultarFichaMedica(element.idPaciente)"> Ver ficha Medica </button>
         <button mat-flat-button *ngIf="element.puedeVerFicha !== true"> Solicitar permiso </button>
       </mat-cell>
     </ng-container>

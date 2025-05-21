@@ -4,8 +4,8 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f5f5f5;
-  margin: 10px 0 0;
+  background-color: #f5f5f5; /* Fondo claro opcional */
+  margin: 0;
 }
 
 /* Define el estilo de la tarjeta */
@@ -17,16 +17,15 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   background-color: white;
-  width: 400px;
+  width: 400px; /* Ancho fijo para la tarjeta */
 }
 
 /* Estilo de la imagen */
 .centered-image {
-  width: 100%;
-  max-width: 100px;
-  height: auto;
-  margin-bottom: 0;
-  margin-top: 250px;
+  width: 100%; /* La imagen ocupará todo el ancho de la tarjeta */
+  max-width: 150px; /* Asegura que no exceda el tamaño de la tarjeta */
+  height: auto; /* Mantiene la proporción */
+  margin-bottom: 10px;
 }
 
 /* Estilo del título */
@@ -37,28 +36,16 @@
   margin: 20px 0;
 }
 
-/* Contenedor del formulario */
-.form-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%; /* Asegura que el formulario ocupe todo el ancho de la tarjeta */
-  margin-bottom: 20px;
-}
-
-/* Estilo de los campos del formulario */
-.full-width {
-  width: 100%; /* Los campos del formulario ocupan el ancho completo */
-  margin-bottom: 15px;
-}
-
 /* Contenedor de los botones */
 .button-container {
   display: flex;
   gap: 10px;
-  width: 100%; /* Asegura que los botones ocupen el ancho de la tarjeta */
+  width: 100%; /* Asegura que el contenedor de botones ocupe el ancho de la tarjeta */
 }
 
 /* Estilo de los botones */
 .button {
-  flex: 1; /* Los botones tendrán el mismo tamaño */
+  flex: 1; /* Los botones ocuparán el mismo espacio */
 }
+
+

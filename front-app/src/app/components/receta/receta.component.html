@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+  <div class="form-container">
+
+    <!-- Nombre -->
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" placeholder="Nombre completo">
+    </mat-form-field>
+
+    <!-- Fecha -->
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fecha" placeholder="Fecha de receta">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- Peso -->
+    <mat-form-field appearance="fill">
+      <mat-label>Peso (kg)</mat-label>
+      <input matInput formControlName="peso" type="number" placeholder="Peso en kilogramos">
+    </mat-form-field>
+
+    <!-- Talla -->
+    <mat-form-field appearance="fill">
+      <mat-label>Talla (cm)</mat-label>
+      <input matInput formControlName="talla" type="number" placeholder="Talla en centímetros">
+    </mat-form-field>
+
+    <!-- Edad -->
+    <mat-form-field appearance="fill">
+      <mat-label>Edad</mat-label>
+      <input matInput formControlName="edad" type="number" placeholder="Edad">
+    </mat-form-field>
+
+    <!-- Alergias -->
+    <mat-checkbox formControlName="alergias" (change)="onAlergiaChange($event)">¿Tiene alergias?</mat-checkbox>
+
+    <!-- Descripción de Alergias -->
+    <mat-form-field appearance="fill" *ngIf="allergies">
+      <mat-label>Descripción de Alergias</mat-label>
+      <textarea matInput formControlName="descripcionAlergias" placeholder="Describa las alergias del paciente"></textarea>
+    </mat-form-field>
+
+    <!-- Receta -->
+    <mat-form-field appearance="fill">
+      <mat-label>Receta</mat-label>
+      <textarea matInput formControlName="receta" placeholder="Escriba la receta médica"></textarea>
+    </mat-form-field>
+
+    <!-- Botón de envío -->
+    <button mat-raised-button color="primary" type="submit" [disabled]="recipeForm.invalid">Guardar Receta</button>
+
+    <!-- Botón de impresión -->
+    <button mat-raised-button color="accent" type="button" (click)="printRecipe()">Imprimir Receta</button>
+
+  </div>
+</form>
