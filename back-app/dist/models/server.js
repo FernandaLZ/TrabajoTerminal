@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const user_1 = __importDefault(require("../routes/user"));
 const cors_1 = __importDefault(require("cors")); // Importar cors
+const bodyParser = require('body-parser');
 class Server {
     constructor() {
         var _a;
@@ -31,7 +32,11 @@ class Server {
             credentials: true, // Allow credentials (cookies, authorization headers, etc.)
             preflightContinue: false, // Don't send a response on OPTIONS requests automatically
         }));
-        this.app.use(express_1.default.json());
+        // Middleware para analizar el cuerpo de la solicitud (JSON)
+        this.app.use(express_1.default.json()); // `express.json()` reemplaza a `bodyParser.json()`
+        this.app.use(bodyParser.json());
+        // Si quieres manejar los parámetros URL-encoded (por ejemplo, formularios)
+        this.app.use(express_1.default.urlencoded({ extended: true }));
     }
 }
 exports.default = Server;
