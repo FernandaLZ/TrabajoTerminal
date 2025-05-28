@@ -31,6 +31,7 @@
     <string name="confirm_doctor_message">¿Confirmar al doctor seleccionado?</string>
     <string name="confirm_button">Confirmar</string>
     <string name="confirm_doctor_title">Confirmación de Doctor</string>
-
+    <string name="compartment_selected">Seleccionaste el compartimento %1$d</string>
+    <string name="data_received">Dato recibido: %1$s</string>
 
 </resources>
