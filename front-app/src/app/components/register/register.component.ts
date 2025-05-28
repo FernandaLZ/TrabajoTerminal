@@ -3,9 +3,9 @@ import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatInput} from "@angular/material/input";
 import {MatButton} from "@angular/material/button";
-import {UserService} from "../../services/user.service";
 import {MatCard} from "@angular/material/card";
-import {Router, RouterLink} from '@angular/router'; // Importar Router
+import {Router, RouterLink} from '@angular/router';
+import {AuthService} from "../../services/auth-service.service"; // Importar Router
 
 @Component({
   selector: 'app-register',
@@ -28,7 +28,7 @@ export class RegisterComponent {
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService,
+    private authService:AuthService,
     private router: Router
   ) {
     this.registerForm = this.fb.group({
@@ -45,31 +45,29 @@ export class RegisterComponent {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      const formData = this.registerForm.value;
-      console.log('Formulario enviado:', formData);
-      const form={
-        correo: this.registerForm.get('email')?.value,
-        password:this.registerForm.get('password')?.value,
-        tipo:this.registerForm.get('tipo')?.value,
-        nombre:this.registerForm.get('nombre')?.value,
-        apellidom:this.registerForm.get('apellidoMaterno')?.value,
-        apellidop:this.registerForm.get('apellidoPaterno')?.value,
-        telefono:this.registerForm.get('telefono')?.value
-      }
+      const form = this.registerForm.value;
+      const email = form.email;
+      const password = form.password;
 
-      this.userService.createUser(form).subscribe({
-        next: (response) => {
-          console.log('Usuario creado:', response);
-          alert('Usuario creado exitosamente');
-          this.router.navigate(['/list']).then(r => false);
+      const datosExtra = {
+        nombre: form.nombre,
+        apellidoPaterno: form.apellidoPaterno,
+        apellidoMaterno: form.apellidoMaterno,
+        telefono: form.telefono
+      };
+
+      this.authService.register(email, password, datosExtra).subscribe({
+        next: (res) => {
+          const uid = res.user?.uid;
+          console.log('Registro exitoso:', uid);
+          alert('Registro Exitoso')
+          this.router.navigate([`/list/${uid}`]).then(_=>false); // ← Aquí rediriges con el UID
         },
-        error: (error) => {
-          console.error('Error al crear el usuario:', error);
-          alert('Hubo un error al crear el usuario');
+        error: (err) => {
+          console.error('Error en el registro:', err);
+          alert('Error en el registro:' + err);
         }
       });
-    } else {
-      alert('Por favor, completa todos los campos correctamente.');
     }
   }
 }

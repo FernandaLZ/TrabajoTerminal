@@ -1,7 +1,9 @@
 package com.example.tt2025_a076_movil
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.tt2025_a076_movil.data.ConfirmacionRepository
 import com.example.tt2025_a076_movil.databinding.ActivityConfirmDoctorBinding
 
 class ConfirmDoctorActivity : AppCompatActivity() {
@@ -15,12 +17,26 @@ class ConfirmDoctorActivity : AppCompatActivity() {
 
         // Mostrar el nombre del doctor seleccionado
         val doctorName = intent.getStringExtra("DOCTOR_NAME")
-        binding.tvDoctorConfirmation.text = getString(R.string.confirm_doctor_message, doctorName)
+        val doctorUid = intent.getStringExtra("DOCTOR_UID")
+
+        binding.tvDoctorConfirmation.text = getString(R.string.confirm_doctor_message, doctorName ?: "Doctor")
 
         // Confirmar selección
         binding.btnConfirm.setOnClickListener {
-            // Aquí puedes agregar lógica para enviar la confirmación al servidor
-            finish()
+            val idDoctor = intent.getStringExtra("DOCTOR_UID") ?: return@setOnClickListener
+
+            val repository = ConfirmacionRepository()
+
+            repository.aceptarPermiso(
+                idDoctor = idDoctor,
+                onSuccess = {
+                    Toast.makeText(this, "Permiso aceptado correctamente", Toast.LENGTH_SHORT).show()
+                    finish()
+                },
+                onFailure = { e ->
+                    Toast.makeText(this, "Error al aceptar permiso: ${e.message}", Toast.LENGTH_LONG).show()
+                }
+            )
         }
     }
 }

@@ -26,11 +26,17 @@
     <string name="gestion_monitor_title">Gestión y Monitoreo</string>
     <string name="receta_title">Ver Recetas</string>
     <string name="example_receta">Receta ejemplo</string>
-    <string name="select_doctor">Seleccionar</string>
+    <string name="select_doctor">Confirmar Doctor</string>
     <string name="doctor_name">Doctor Name</string>
-    <string name="confirm_doctor_message">¿Confirmar al doctor seleccionado?</string>
+    <string name="confirm_doctor_message">¿Confirmar al doctor seleccionado: %1$s?</string>
     <string name="confirm_button">Confirmar</string>
     <string name="confirm_doctor_title">Confirmación de Doctor</string>
+    <string name="last_name_paterno_hint">Apellido paterno</string>
+    <string name="last_name_materno_hint">Apellido materno</string>
+    <string name="rechazar">Rechazar</string>
+    <string name="nombre_del_doctor">Nombre del doctor</string>
+    <string name="fecha_de_creaci_n">Fecha de Creación</string>
+    <string name="contenido_de_la_receta">Contenido de la receta</string>
 
 
 </resources>

@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="example-container mat-elevation-z8 tw-mx-6">
+<div class="example-container mat-elevation-z8  tw-w-full">
   <mat-table #table [dataSource]="ELEMENT_DATA">
     <!-- Position Column -->
     <ng-container matColumnDef="position">
@@ -19,7 +19,7 @@
       <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
       <mat-cell *matCellDef="let element">
         <button mat-flat-button *ngIf="element.puedeVerFicha === true" (click)="consultarFichaMedica(element.idPaciente)"> Ver ficha Medica </button>
-        <button mat-flat-button *ngIf="element.puedeVerFicha !== true"> Solicitar permiso </button>
+        <button mat-flat-button *ngIf="element.puedeVerFicha !== true" (click)="solicitarPermiso(element.idPaciente)"> Solicitar permiso </button>
       </mat-cell>
     </ng-container>
 

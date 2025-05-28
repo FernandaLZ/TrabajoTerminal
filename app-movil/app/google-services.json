@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "964856289687",
+    "project_id": "trabajoterminalpastillero",
+    "storage_bucket": "trabajoterminalpastillero.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964856289687:android:ba0fd4a9888c72be570cd2",
+        "android_client_info": {
+          "package_name": "com.example.tt2025_a076_movil"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdiq9nhJkzTiPb3a7qIQ5cam_kTcV6Jns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,20 +1,38 @@
 <app-navbar></app-navbar>
 <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
   <div class="form-container">
-
+    <!-- Nombre -->
+    <div>
+      <mat-form-field appearance="fill" style="width: 65%">
+        <mat-label>Nombre Doctor</mat-label>
+        <input matInput formControlName="nombreDoctor" placeholder="Nombre Doctor">
+      </mat-form-field>
+      <mat-form-field style="width: 35%">
+        <mat-label>Fecha de Creacion</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fechaCreacion">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
     <!-- Nombre -->
     <mat-form-field appearance="fill">
       <mat-label>Nombre</mat-label>
-      <input matInput formControlName="nombre" placeholder="Nombre completo">
+      <input matInput formControlName="nombreCompleto" placeholder="Nombre completo">
     </mat-form-field>
 
-    <!-- Fecha -->
-    <mat-form-field appearance="fill">
-      <mat-label>Fecha</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="fecha" placeholder="Fecha de receta">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+    <div>
+      <mat-form-field style="width: 65%">
+        <mat-label>Fecha de Nacimiento</mat-label>
+        <input matInput [matDatepicker]="pickerNacimiento" formControlName="fechaNacimiento">
+        <mat-datepicker-toggle matIconSuffix [for]="pickerNacimiento"></mat-datepicker-toggle>
+        <mat-datepicker #pickerNacimiento></mat-datepicker>
+      </mat-form-field>
+      <!-- Edad -->
+      <mat-form-field appearance="fill" style="width: 35%">
+        <mat-label>Edad</mat-label>
+        <input matInput formControlName="edad" type="number" placeholder="Edad">
+      </mat-form-field>
+    </div>
 
     <!-- Peso -->
     <mat-form-field appearance="fill">
@@ -26,12 +44,6 @@
     <mat-form-field appearance="fill">
       <mat-label>Talla (cm)</mat-label>
       <input matInput formControlName="talla" type="number" placeholder="Talla en centímetros">
-    </mat-form-field>
-
-    <!-- Edad -->
-    <mat-form-field appearance="fill">
-      <mat-label>Edad</mat-label>
-      <input matInput formControlName="edad" type="number" placeholder="Edad">
     </mat-form-field>
 
     <!-- Alergias -->

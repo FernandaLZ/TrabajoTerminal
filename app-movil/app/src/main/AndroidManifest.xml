@@ -43,6 +43,12 @@
         <activity
             android:name=".ConfirmacionActivity"
             android:exported="true" />
+        <activity
+            android:name=".ConfirmDoctorActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RecetaPacienteActivity"
+            android:exported="true" />
 
     </application>
 </manifest>

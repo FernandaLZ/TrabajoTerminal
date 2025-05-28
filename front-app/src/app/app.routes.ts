@@ -11,7 +11,7 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'list/:id', component: ListPatientsComponent },
   { path: 'record/:id/:idPaciente', component: MedicalRecordFormComponent },
-  { path: 'receta', component: RecetaComponent },
+  { path: 'receta/:id/:idPaciente/:idReceta', component: RecetaComponent },
   { path: 'inicio', component: InicioComponent },
   { path: '', redirectTo: '/inicio', pathMatch: 'full' } // Redirige a login por defecto
 ];

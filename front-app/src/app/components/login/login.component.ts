@@ -52,24 +52,19 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     const { email, password } = this.loginForm.value;
 
-    // Usar el servicio para autenticar al usuario
     this.authService.login(email, password).subscribe(
       (response: any) => {
         this.loading = false;
+
+        localStorage.setItem('token', response.token); // ⬅️ ya tienes el token listo
         console.log('Usuario autenticado:', response.user);
         alert('Usuario autenticado exitosamente');
 
-        // Guardar el token de Firebase en localStorage
-        localStorage.setItem('token', response.user?.getIdToken());
-
-        // Obtener el userId (puede ser response.user?.uid o el valor que necesites)
         const userId = response.user?.uid;
-
-        // Redirigir a la página principal y pasar el userId como query param
-        this.router.navigate(['/list', userId]);
+        this.router.navigate(['/list', userId]).then(_=>false);
       },
       (error) => {
-        console.error(error)
+        console.error(error);
         this.loading = false;
         this.error = 'Credenciales incorrectas';
         alert(this.error);
