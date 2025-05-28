@@ -1,4 +1,65 @@
-.full-width {
-  width: 100%;
-  margin-bottom: 16px;
+/* Centra la tarjeta en la pantalla */
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+  margin: 10px 0 0;
 }
+
+/* Define el estilo de la tarjeta */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background-color: white;
+  width: 400px;
+}
+
+/* Estilo de la imagen */
+.centered-image {
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+/* Estilo del título */
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Contenedor del formulario */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Asegura que el formulario ocupe todo el ancho de la tarjeta */
+  margin-bottom: 20px;
+}
+
+/* Estilo de los campos del formulario */
+.full-width {
+  width: 100%; /* Los campos del formulario ocupan el ancho completo */
+  margin-bottom: 15px;
+}
+
+/* Contenedor de los botones */
+.button-container {
+  display: flex;
+  gap: 10px;
+  width: 100%; /* Asegura que los botones ocupen el ancho de la tarjeta */
+}
+
+/* Estilo de los botones */
+.button {
+  flex: 1; /* Los botones tendrán el mismo tamaño */
+}
+

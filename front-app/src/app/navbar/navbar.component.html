@@ -1,0 +1,37 @@
+<!-- navbar.component.html -->
+<nav class="navbar">
+  <div class="navbar-left">
+    <img src="assets/img/logo.jpg" alt="Logo" class="logo" [routerLink]="'/'"/>
+  </div>
+
+  <div class="navbar-right">
+    <details class="dropdown">
+      <summary>
+        <div class="notification-container">
+          <mat-icon color="primary" class="notification-icon">notifications</mat-icon>
+          <span matBadge="5" matBadgeColor="accent" class="badge"></span>
+        </div>
+      </summary>
+      <ul class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2">
+        <li class="dropdown-item">
+          Juan tomó la pastilla a la indicada
+          <button class="check-button">
+            <mat-icon color="white">check_circle</mat-icon>
+          </button>
+        </li>
+        <li class="dropdown-item">
+          Diana no tomó la pastilla a la indicada
+          <button class="check-button">
+            <mat-icon color="white">check_circle</mat-icon>
+          </button>
+        </li>
+      </ul>
+    </details>
+
+    <button mat-button (click)="cerrarSesion()">
+      Cerrar Sessión
+    </button>
+  </div>
+</nav>
+
+

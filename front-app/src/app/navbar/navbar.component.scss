@@ -1,0 +1,99 @@
+/* navbar.component.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.navbar-left .logo {
+  height: 40px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+button.mat-icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-icon {
+  font-size: 36px; /* Asegúrate de que el icono sea lo suficientemente grande */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button.mat-icon-button {
+  margin-left: 20px;
+}
+
+.user-icon {
+  cursor: pointer;
+}
+
+details > summary {
+  list-style: none; /* Elimina el marcador por defecto (flecha) */
+  display: flex;
+  align-items: center;
+}
+
+.notification-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.notification-icon {
+  font-size: 36px; /* Tamaño del ícono */
+  margin-right: 8px; /* Espacio entre el ícono y el badge */
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* Estilos para los elementos de la lista del dropdown */
+.dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.check-button {
+  background-color: green; /* Fondo verde para el botón */
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%; /* Para hacer el botón redondo */
+  color: white;
+}
+
+.check-button mat-icon {
+  font-size: 24px;
+}
+

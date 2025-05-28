@@ -36,5 +36,25 @@
 
         <!-- Registro del BroadcastReceiver -->
         <receiver android:name=".AlarmReceiver" />
+        <!-- Otras actividades -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".GestionMonitoreoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RecetaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ConfirmacionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ConfirmDoctorActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RecetaPacienteActivity"
+            android:exported="true" />
+
     </application>
 </manifest>

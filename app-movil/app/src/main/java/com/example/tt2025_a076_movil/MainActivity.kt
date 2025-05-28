@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.example.tt2025_a076_movil.data.LoginRepository
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.tt2025_a076_movil.databinding.ActivityMainBinding
@@ -15,6 +16,7 @@ import com.example.tt2025_a076_movil.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val loginRepository = LoginRepository()
 
     private val bluetoothPermissions = arrayOf(
         Manifest.permission.BLUETOOTH,
@@ -62,6 +64,10 @@ class MainActivity : AppCompatActivity() {
 
         // Botón Cerrar Sesión
         binding.btnLogout.setOnClickListener {
+            loginRepository.logout()
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
             finish()
         }
     }

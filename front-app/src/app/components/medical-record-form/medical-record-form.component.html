@@ -1,0 +1,141 @@
+<app-navbar></app-navbar>
+
+<div>
+  <!-- Columna izquierda: Ficha médica -->
+  <form [formGroup]="medicalForm">
+    <div class="form-container">
+      <h1 class="centered-title">Ficha Medica</h1>
+      <!-- Nombre -->
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombreCompleto" placeholder="Nombre completo">
+      </mat-form-field>
+
+      <!-- Sexo -->
+      <mat-form-field appearance="fill">
+        <mat-label>Sexo</mat-label>
+        <mat-select formControlName="sexo">
+          <mat-option value="masculino">Masculino</mat-option>
+          <mat-option value="femenino">Femenino</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Edad -->
+      <mat-form-field appearance="fill">
+        <mat-label>Edad</mat-label>
+        <input matInput formControlName="edad" type="number" placeholder="Edad">
+      </mat-form-field>
+
+      <!-- Fecha de nacimiento -->
+      <mat-form-field>
+        <mat-label>Fecha de nacimiento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <!-- Alergias -->
+      <mat-form-field appearance="fill">
+        <mat-label>Alergias</mat-label>
+        <textarea matInput formControlName="alergias" placeholder="Especificar alergias"></textarea>
+      </mat-form-field>
+
+      <!-- Antecedentes quirúrgicos -->
+      <mat-form-field appearance="fill">
+        <mat-label>Antecedentes quirúrgicos</mat-label>
+        <textarea matInput formControlName="antecedentesQuirurgicos" placeholder="Especificar antecedentes quirúrgicos"></textarea>
+      </mat-form-field>
+
+      <div>
+        <!-- Checkbox: Antecedentes psicológicos -->
+        <mat-checkbox formControlName="antecedentesPsicologicos">Antecedentes psicológicos</mat-checkbox>
+
+        <!-- Checkbox: Cardiopatías -->
+        <mat-checkbox formControlName="cardiopatia">Cardiopatías</mat-checkbox>
+      </div>
+
+      <!-- Vacunas -->
+      <mat-form-field appearance="fill">
+        <mat-label>Vacunas</mat-label>
+        <textarea matInput formControlName="vacunas" placeholder="Especificar vacunas"></textarea>
+      </mat-form-field>
+
+      <!-- Enfermedades crónicas -->
+      <mat-form-field appearance="fill">
+        <mat-label>Enfermedades crónicas</mat-label>
+        <textarea matInput formControlName="enfermedadesCronicas" placeholder="Especificar enfermedades crónicas"></textarea>
+      </mat-form-field>
+
+      <!-- Medicación -->
+      <mat-form-field appearance="fill">
+        <mat-label>Medicación</mat-label>
+        <textarea matInput formControlName="medicacion" placeholder="Especificar medicación"></textarea>
+      </mat-form-field>
+
+      <!-- Notas -->
+      <mat-form-field appearance="fill">
+        <mat-label>Otros</mat-label>
+        <textarea matInput formControlName="otros" placeholder="Notas adicionales"></textarea>
+      </mat-form-field>
+
+      <h1 class="centered-title">Contactos</h1>
+        <div formArrayName="contactos">
+          <div *ngFor="let contacto of contactos.controls; let i = index" [formGroupName]="i">
+
+            <mat-form-field appearance="fill" class="w-full">
+              <mat-label>Nombre del contacto</mat-label>
+              <input matInput formControlName="nombre" placeholder="Ej. Ana Martínez">
+              <mat-error *ngIf="contacto.get('nombre')?.hasError('required')">
+                El nombre es obligatorio.
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="w-full">
+              <mat-label>Teléfono</mat-label>
+              <input matInput formControlName="telefono" placeholder="Ej. 5512345678">
+              <mat-error *ngIf="contacto.get('telefono')?.hasError('required')">
+                El teléfono es obligatorio.
+              </mat-error>
+              <mat-error *ngIf="contacto.get('telefono')?.hasError('pattern')">
+                El teléfono debe tener 10 dígitos.
+              </mat-error>
+            </mat-form-field>
+
+            <button mat-icon-button color="warn" class="width0" (click)="eliminarContacto(i)" *ngIf="contactos.length > 1">
+              <mat-icon>delete</mat-icon>
+            </button>
+
+          </div>
+          <button mat-icon-button color="accent" class="width0" type="button" (click)="agregarContacto()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+
+
+      <!-- Botón de envío -->
+      <button mat-raised-button color="primary" (click)="onSubmit()"  [disabled]="medicalForm.invalid">Enviar</button>
+      <h1 class="centered-title">Recetas</h1>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let receta of recetas">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ receta.nombreDoctor || 'Sin nombre' }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <button mat-button color="primary" (click)="irReceta(receta.id)">
+            {{ receta.fechaCreacion?.toDate() | date:'medium' }}
+          </button>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-spinner *ngIf="cargando" diameter="40"></mat-spinner>
+      <p *ngIf="!cargando && recetas.length === 0">No hay recetas registradas.</p>
+      <div class="button-container">
+        <button mat-icon-button color="accent" class="width0" type="button" (click)="agregarReceta()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+

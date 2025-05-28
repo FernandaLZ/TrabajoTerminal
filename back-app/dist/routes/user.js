@@ -5,4 +5,7 @@ const user_1 = require("../controllers/user");
 const routerUser = (0, express_1.Router)();
 routerUser.post('/', user_1.newUser);
 routerUser.post('/login', user_1.loginUser);
+routerUser.post('/list', user_1.listPacientes);
+routerUser.post('/paciente', user_1.createOrUpdatePaciente);
+routerUser.get('/pacientes/:uid', user_1.getFichaMedica);
 exports.default = routerUser;
